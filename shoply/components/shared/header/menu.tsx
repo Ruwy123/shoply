@@ -41,7 +41,7 @@ const Menu = () => {
                 <ShoppingBag /> Cart
               </Link>
             </Button>
-            <Button asChild className="bg-black text-white">
+            <Button asChild>
               <Link href="/sign-in">
                 <UserIcon />
                 Sign In
