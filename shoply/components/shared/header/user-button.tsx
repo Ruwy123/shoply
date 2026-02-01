@@ -46,16 +46,14 @@ const UserButton = async () => {
               {session.user?.email}
             </div>
           </DropdownMenuLabel>
-          <DropdownMenuItem className="p-0 mb-1">
-            <form action={signOutUser} className="w-full">
-              <Button
-                type="submit"
-                className="w-full py-4 px-2 h-4 justify-start "
-                variant="ghost"
-              >
-                Sign Out
-              </Button>
-            </form>
+          <DropdownMenuItem asChild className="p-0 mb-1">
+            <Button
+              className="w-full py-4 px-2 h-4 justify-start "
+              variant="ghost"
+              onClick={signOutUser}
+            >
+              Sign Out
+            </Button>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
