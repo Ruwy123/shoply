@@ -55,8 +55,8 @@ const SignUpForm = () => {
           type="password"
           id="password"
           name="password"
-          required
           autoComplete="password"
+          required
           defaultValue={signUpDefaultValues.password}
         ></Input>
       </div>
@@ -66,8 +66,8 @@ const SignUpForm = () => {
           type="password"
           id="confirmPassword"
           name="confirmPassword"
-          required
           autoComplete="confirmPassword"
+          required
           defaultValue={signUpDefaultValues.confirmPassword}
         ></Input>
       </div>
@@ -78,7 +78,7 @@ const SignUpForm = () => {
         )}
         <div className="text-sm text-center text-muted-foreground pt-5">
           Already have and account?
-          <Link href="/sign-up" target="_self" className="link ">
+          <Link href="/sign-in" target="_self" className="link ">
             Sign In
           </Link>
         </div>

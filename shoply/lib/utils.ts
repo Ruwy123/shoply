@@ -1,5 +1,7 @@
+import { Prisma } from "@prisma/client";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { ZodError } from "zod";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -19,18 +21,16 @@ export function formatNumberWithDecimal(num: number): string {
 //format  errors
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function formatError(error: any) {
-  if (error.name === "ZodError") {
+  if (error instanceof ZodError) {
     //handle Zod error
-    const fieldErrors = Object.keys(error.errors).map(
-      (field) => error.errors[field].message,
-    );
-    return fieldErrors.join(". ");
-  } else if (
-    error.name === "PrismaClientKnownRequestError" &&
-    error.code === "P2002"
-  ) {
-    //handle prisma error
+    return error.issues.map((err) => err.message).join(", ");
+  } else if (error instanceof Prisma.PrismaClientKnownRequestError) {
+    if (error.code === "P2002") {
+      return "An account with this email already exists";
+    }
   } else {
-    //other
+    return typeof error.message === "string"
+      ? error.message
+      : JSON.stringify(error.message);
   }
 }
