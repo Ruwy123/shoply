@@ -16,3 +16,10 @@ export const signUpDefaultValues = {
   password: "",
   confirmPassword: "",
 };
+export const shippingAddressDefaultValues = {
+  fullName: "John Doe",
+  streetAddress: "122 Main st",
+  city: "Kumasi",
+  postalCode: "233",
+  country: "Ghana",
+};
